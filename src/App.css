@@ -27,6 +27,15 @@
 .App-link {
   color: #61dafb;
 }
+.inline{
+  float: left;
+}
+.floatRight{
+  float: right;
+}
+.bloc{
+  display: block;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -36,3 +45,5 @@
     transform: rotate(360deg);
   }
 }
+
+

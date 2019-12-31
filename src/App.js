@@ -1,26 +1,32 @@
 import React from 'react';
 import logo from './logo.svg';
+import PokemonContainer from './containers/PokemonContainer'
+import PokemonListContainer from './containers/PokemonListContainer'
 import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+function range(start, end) {
+  var ans = [];
+  for (let i = start; i <= end; i++) {
+      ans.push(i);
+  }
+  return ans;
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+ 
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route path='/' exact 
+          component={PokemonListContainer}/>
+          <Route path='/pokemon/:id' 
+          render={(props)=><PokemonContainer pkId={props.match.params.id}/>} />
+        </Switch>
+      </BrowserRouter>
+    );
+  // <PokemonListContainer/>
+    //<PokemonContainer pkId='3' ></PokemonContainer>
+ 
 }
 
 export default App;
