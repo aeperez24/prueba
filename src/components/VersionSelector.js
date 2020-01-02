@@ -1,4 +1,6 @@
 import React from 'react';
+import Select from '@material-ui/core/Select';
+
 
 const VersionSelector=(props)=>{
     const set = new Set();
@@ -10,9 +12,9 @@ const VersionSelector=(props)=>{
             if(defaultVersion!=null)
                 props.handler(defaultVersion);
     }
-        return <select onChange={props.handler}>
+        return <Select onChange={props.handler}>
                 {Array.from(set.values()).map(s=><option value ={s}>{s}</option>)}
-            </select>;
+            </Select>;
 }
 
 export default VersionSelector;
