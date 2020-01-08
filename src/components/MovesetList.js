@@ -4,11 +4,15 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography';
-
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 const MovesetList=(props)=>{
    
    const getNames = function(moves){
-    return moves.map(move=><li>{move.name}</li>);
+    const items= moves.map(move=><ListItem><ListItemText primary={move.name} /></ListItem>);
+   return <List>{items}</List>
    }
    
     const filtered = (props.versionSelected==null)? 
@@ -32,7 +36,7 @@ const MovesetList=(props)=>{
             Tutor Moves
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          <ul>{getNames(tutorMoves)}</ul>
+          {getNames(tutorMoves)}
           </Typography>
         </Card>;
     const machineComponent = <Card style={{backgroundColor:'rgb(227, 226, 226)'}}>
@@ -41,8 +45,7 @@ const MovesetList=(props)=>{
           </Typography>
     
           <Typography variant="body2" color="textSecondary" component="p">
-          <ul>{getNames(machineMoves)}
-          </ul>
+          {getNames(machineMoves)}
           </Typography>
         </Card>;
 
@@ -50,7 +53,7 @@ const MovesetList=(props)=>{
     <Typography gutterBottom variant="h5" component="h1">
                   Level Moves</Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
-                  <ul>{getNames(lvlMoves)}</ul>
+                  {getNames(lvlMoves)}
       </Typography>
     </Card>;
 
