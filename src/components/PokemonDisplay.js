@@ -10,18 +10,23 @@ import { typography } from '@material-ui/system';
 import Grid from '@material-ui/core/Grid'
 import leftArr from '../left.png'
 import rightArr from '../right.png'
+import upArr from '../up.png'
+import { Redirect } from 'react-router-dom'
 
+const POKEMON_URI="/pokemon/"
 
-
-function nextPage() {
-    return <input   style={{height:'auto',width:'100%'}} type="image" src={rightArr} onClick={()=>{}}></input>   
+function nextPage(pkId) {
+    const id=POKEMON_URI+String(parseInt(pkId)+1);
+    return <a href={id}><input   style={{height:'auto',width:'100%'}} type="image" src={rightArr} onClick={()=>{}}></input> </a>  
    }
    
-function  prevPage() {
-       return <input style={{height:'auto',width:'100%'}}  type="image" src={leftArr} onClick={()=>{}}></input>   
+function  prevPage(pkId) {
+    const id=POKEMON_URI+String(parseInt(pkId)-1);
+       return <a href={id}><input style={{height:'auto',width:'100%'}}  type="image" src={leftArr} onClick={()=>{
+       }}></input></a>   
    }
 function  upPage(){
-       return <input style={{height:'auto',width:'100%'}}  type="image" src={leftArr} onClick={()=>{}}></input>
+       return <a href="/"><input style={{height:'auto',width:'100%'}}  type="image" src={upArr} onClick={()=>{}}></input></a>
    }
    
 const PokemonDisplay = (props) => {
@@ -29,6 +34,7 @@ const PokemonDisplay = (props) => {
     if(props.name != null ){
         name = props.name;
     }
+    console.log(props);
 //COMO MODIFICAR LA PALETA
     return <div style={{width: '80%', margin: '0 auto'}}>
         
@@ -37,13 +43,13 @@ const PokemonDisplay = (props) => {
         </AppBar>
         <Card style={{backgroundColor:'#c1bcbc'}}>
         <Grid container spacing={1}>
-    <Grid item xs={2} sm={2} md={2}><div style={{margin: 'auto'}}>{prevPage()}</div></Grid>
+    <Grid item xs={2} sm={2} md={2}><div style={{margin: 'auto'}}>{prevPage(props.pkId)}</div></Grid>
     <Grid item xs={3} sm={3} md={3}><div style={{margin: 'auto'}}></div></Grid>
-    <Grid item xs={2} sm={2} md={2}><div style={{margin: 'auto'}}>{nextPage()}</div></Grid>
+    <Grid item xs={2} sm={2} md={2}><div style={{margin: 'auto'}}>{upPage()}</div></Grid>
     
     <Grid item xs={3} sm={3} md={3}><div style={{margin: 'auto'}}></div></Grid>
 
-    <Grid item xs={2} sm={2} md={2} ><div style={{margin: 'auto'}}>{nextPage()}</div></Grid>
+    <Grid item xs={2} sm={2} md={2} ><div style={{margin: 'auto'}}>{nextPage(props.pkId)}</div></Grid>
     </Grid>
         <Grid container spacing={3}>
             

@@ -62,7 +62,7 @@ class PokemonContainer extends Component {
             .flavor_text_entries;
             desc = arr.find((s)=>s.language.name=='en').flavor_text;
         }
-        return<div style={{backgroundColor:'#6a6262'}}> <PokemonDisplay name={name} img={urlImg} desc={desc} types={types} moves={moves} versionSelected={this.state.versionSelected} versionHandler={this.handleVersion}/>
+        return<div style={{backgroundColor:'#6a6262'}}> <PokemonDisplay name={name} img={urlImg} desc={desc} types={types} moves={moves} versionSelected={this.state.versionSelected} versionHandler={this.handleVersion} pkId={this.props.pkId}/>
         </div>
     }
 
